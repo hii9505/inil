@@ -32,9 +32,7 @@ public class Main {
         System.out.println("\nlevel");
         levelOrder(root, queue);
 
-        while(queue != null){
-            System.out.println(queue.pop().number);
-        }
+
 
 
     }
@@ -68,20 +66,29 @@ public class Main {
 
 
     public static void levelOrder(Tree tree, Queue queue) {
-        ArrayQueue que = new ArrayQueue(20);
-            queue.push(queue.tail, tree);
 
-            if (tree.left != null) {
-                queue.push(queue.tail, tree.left);
-                tree = tree.left;
-            }
+        queue.push(queue.tail , tree);
+        Tree tempTree;
 
-            if (tree.right != null) {
-                queue.push(queue.tail, tree.right);
-                tree = tree.right;
+    while(true){
+        tempTree = queue.pop();
+        if(tempTree == null){
+            break;
+        }
+        System.out.print(tempTree.number + " ");
 
+        if(tempTree.left != null){
+          queue.push(queue.tail, tempTree.left);
+        }
+        if(tempTree.right != null){
+            queue.push(queue.tail, tempTree.right);
         }
 
     }
 
+
+    }
+
 }
+
+
